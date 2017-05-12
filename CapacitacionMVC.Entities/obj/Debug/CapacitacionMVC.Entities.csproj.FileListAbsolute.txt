@@ -1,0 +1,15 @@
+D:\Desarrollo\HexactaLabs\CapacitacionMVC\CapacitacionMVC.Entities\bin\Debug\CapacitacionMVC.Entities.dll
+D:\Desarrollo\HexactaLabs\CapacitacionMVC\CapacitacionMVC.Entities\bin\Debug\CapacitacionMVC.Entities.pdb
+D:\Desarrollo\HexactaLabs\CapacitacionMVC\CapacitacionMVC.Entities\obj\Debug\CapacitacionMVC.Entities.csprojResolveAssemblyReference.cache
+D:\Desarrollo\HexactaLabs\CapacitacionMVC\CapacitacionMVC.Entities\obj\Debug\CapacitacionMVC.Entities.dll
+D:\Desarrollo\HexactaLabs\CapacitacionMVC\CapacitacionMVC.Entities\obj\Debug\CapacitacionMVC.Entities.pdb
+C:\Users\hdemo\Downloads\HexactaLabs\V2\CapacitacionMVC\CapacitacionMVC.Entities\bin\Debug\CapacitacionMVC.Entities.dll
+C:\Users\hdemo\Downloads\HexactaLabs\V2\CapacitacionMVC\CapacitacionMVC.Entities\bin\Debug\CapacitacionMVC.Entities.pdb
+C:\Users\hdemo\Downloads\HexactaLabs\V2\CapacitacionMVC\CapacitacionMVC.Entities\obj\Debug\CapacitacionMVC.Entities.csprojResolveAssemblyReference.cache
+C:\Users\hdemo\Downloads\HexactaLabs\V2\CapacitacionMVC\CapacitacionMVC.Entities\obj\Debug\CapacitacionMVC.Entities.dll
+C:\Users\hdemo\Downloads\HexactaLabs\V2\CapacitacionMVC\CapacitacionMVC.Entities\obj\Debug\CapacitacionMVC.Entities.pdb
+C:\Users\hdemo\Documents\HxLabs\V2\CapacitacionMVC\CapacitacionMVC.Entities\bin\Debug\CapacitacionMVC.Entities.dll
+C:\Users\hdemo\Documents\HxLabs\V2\CapacitacionMVC\CapacitacionMVC.Entities\bin\Debug\CapacitacionMVC.Entities.pdb
+C:\Users\hdemo\Documents\HxLabs\V2\CapacitacionMVC\CapacitacionMVC.Entities\obj\Debug\CapacitacionMVC.Entities.csprojResolveAssemblyReference.cache
+C:\Users\hdemo\Documents\HxLabs\V2\CapacitacionMVC\CapacitacionMVC.Entities\obj\Debug\CapacitacionMVC.Entities.dll
+C:\Users\hdemo\Documents\HxLabs\V2\CapacitacionMVC\CapacitacionMVC.Entities\obj\Debug\CapacitacionMVC.Entities.pdb

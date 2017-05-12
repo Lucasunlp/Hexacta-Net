@@ -1,0 +1,181 @@
+﻿@model CapacitacionMVC.Web.Models.MoviesIndexModel
+
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .delete-section {
+        display: inline;
+    }
+</style>
+
+<h2>Películas</h2>
+<br />
+
+@using (Html.BeginForm("Index", "Movies", FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    <div class="form-group" style="min-width: 400px;">
+        @Html.TextBoxFor(m => m.SearchText, new { @class = "form-control input-lg", type = "search", placeholder = Html.DisplayNameFor(m => m.SearchText), autofocus = "autofocus" })
+    </div>
+    <button class="btn btn-primary btn-lg text-left" type="submit">Buscar</button>
+}
+
+<br />
+<br />
+@if (ViewData["Error"] != null)
+{
+    <div class="red">
+        <p><strong>Error:</strong> @ViewData["Error"].ToString()</p>
+    </div>
+}
+@if (TempData["Aviso"] != null)
+{
+    <div class="green">
+        <p><strong>Success:</strong> @TempData["Aviso"].ToString()</p>
+    </div>
+}
+
+@*if (User.Identity.IsAuthenticated) *@
+@if (true)
+{
+    <style>
+        th {
+            text-align: left;
+        }
+    </style>
+
+   <!-- #####################################################################-->
+    <!-- Completar para acceder a la vista de creación de peliculas--> 
+    <!-- <a class="btn btn-default" href=" Url.Action(...)">Create Movie</a> -->
+    <!-- #####################################################################-->
+    
+    <br />
+    <br />
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="display: none;"></th>
+                <th>Name</th>
+                <th>Release Date</th>
+                <th>Runtime</th>
+                <th>Genres</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model.Movies)
+            {
+                <tr>
+                    <td style="display: none;">@Html.HiddenFor(m => movie.Id)</td>
+                    <td>
+                        <img src="@movie.CoverLink" style="height: 30px;" />
+                        <span id="movie_Name">@movie.Name</span>
+                    </td>
+                    <td>@Html.DisplayFor(m => movie.ReleaseDate, "Date")</td>
+                    <td>@movie.Runtime</td>
+                    <td>@Html.DisplayFor(m => movie.Genres, "Genres")</td>
+                    <td>
+                      
+                        @Html.ActionLink("Edit","Edit", "Movies", new { movie.Id}, null)
+                   </td>
+                    <td>
+
+                       @* @Html.ActionLink("Delete", "Delete", "Movies", new { movie.Id }, null)*@
+                        <div class="delete-section">
+                            <a class="delete-link" href="@Url.Action("Delete", new {id = movie.Id})">Delete</a>
+                            <div class="btn btn-primary delete-confirm" style="display:none" data-delete-id="@movie.Id">Confirm Delete</div>
+                        </div>
+                    </td>
+        
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+}
+else
+{
+    <div class="row ">
+        @foreach (var movie in Model.Movies)
+        {
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <img data-src="holder.js/400x300" src="@movie.CoverLink" style="max-width: 400px; max-height: 300px;">
+
+                    <div class="caption">
+                        <p class="text-center text-primary"><strong>@movie.Name</strong></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@section scripts{
+    <script type="text/javascript">
+    $(function () {
+        $("a.delete-link").click(function () {
+            var deleteLink = $(this);
+            deleteLink.hide();
+            var confirmButton = deleteLink.siblings(".delete-confirm");
+            confirmButton.show();
+
+            var cancelDelete =  function () {
+                removeEvents();
+                showDeleteLink();
+            };
+
+            var deleteItem = function () {
+                removeEvents();
+                confirmButton.hide();
+                $.post(
+                    '@Url.Action("Delete")',
+                    AddAntiForgeryToken({ id: confirmButton.attr('data-delete-id') }))
+                   .done(function () {
+                       var parentRow = deleteLink.parents("tr:first");
+                       parentRow.fadeOut('fast', function () {
+                           parentRow.remove();
+                       });
+                   }).fail(function (data) {
+                       alert("error");
+                   });
+                return false;
+            };
+
+            var removeEvents = function () {
+                confirmButton.off("click", deleteItem);
+                $(document).on("click", cancelDelete);
+                $(document).off("keypress", onKeyPress);
+            };
+
+            var showDeleteLink = function () {
+                confirmButton.hide();
+                deleteLink.show();
+            };
+
+            var onKeyPress = function (e) {
+                //Cancel if escape key pressed
+                if (e.which == 27) {
+                    cancelDelete();
+                }
+            };
+
+            confirmButton.on("click", deleteItem);
+            $(document).on("click", cancelDelete);
+            $(document).on("keypress", onKeyPress);
+
+            return false;
+        });
+
+        AddAntiForgeryToken = function (data) {
+            data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+            return data;
+        };
+    });
+    </script>
+}
